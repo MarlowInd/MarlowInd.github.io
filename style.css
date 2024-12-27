@@ -91,6 +91,7 @@ body {
     pointer-events: none;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-radius: 32px;
+    z-index: 202;
 }
 #send-btn {
     position: fixed;
@@ -125,4 +126,19 @@ body {
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M17.5,16.6c0,0.1-1,0.2-1,0.2s-4,0.5-4.2,0.6c-0.2,0.1-0.3,0.2-0.3,0.2s-1.2,2.2-1.8,3.6c-0.6,1.4,0.7,0.7,0.7,0.7l10.4-4.6 l0,0c0.8-0.3,0.7-0.7,0.7-0.7s0.1-0.4-0.7-0.7l0,0l-10.4-4.6c0,0-1.3-0.6-0.7,0.7s1.8,3.6,1.8,3.6s0.1,0.1,0.3,0.2 c0.2,0.1,4.2,0.6,4.2,0.6S17.5,16.5,17.5,16.6z"/><path d="M11.2,17L11.2,17c0.1-0.1,0.2-0.3,0.5-0.4c-0.2-0.1-0.4-0.3-0.4-0.4l0,0l0,0c0-0.1-1.2-2.3-1.9-3.6 c-0.1-0.3-0.5-1.1-0.1-1.7c0.2-0.4,0.6-0.6,1.1-0.6c0.4,0,0.9,0.2,0.9,0.2l5.7,2.5C18.9,10.9,20,9,20,7c0-2.8-2.2-5-5-5 c-1.6,0-3.1,0.7-4,1.9C10,2.7,8.5,2,7,2C4.2,2,2,4.2,2,7c0,3.4,3.1,6.2,7.7,10.4l0.9,0.8C10.9,17.5,11.1,17.1,11.2,17L11.2,17z"/></svg>') no-repeat center;
     background-size: contain;
     align-self: left;
+}
+.loader {position: fixed;
+    top: 50% - 20px;
+    left: 50% - 20px;
+    border: 2px solid #707070;
+    border-top: 3px solid #e0e0e0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    z-index: 201;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

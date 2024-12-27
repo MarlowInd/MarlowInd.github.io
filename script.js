@@ -88,7 +88,7 @@ const products = [
     { name: 'prologue', size: 'Oversize (unico)', catalog: './buzos/galeria/prologue_verde oscuro.jpg', zoom: './buzos/zoom/prologue_verde oscuro.jpg' },
     { name: 'prologue', size: 'Oversize (unico)', catalog: './buzos/galeria/prologue_verde.jpg', zoom: './buzos/zoom/prologue_verde.jpg' },
     { name: 'puas', size: 'Oversize (unico)', catalog: './buzos/galeria/puas_negro.jpg', zoom: './buzos/zoom/puas_negro.jpg' },
-    { name: 'rernember', size: 'Oversize (unico)', catalog: './buzos/galeria/rernember_celeste.jpg', zoom: './buzos/zoom/rernember_celeste.jpg' },
+    { name: 'remember', size: 'Oversize (unico)', catalog: './buzos/galeria/remember_celeste.jpg', zoom: './buzos/zoom/remember_celeste.jpg' },
     { name: 'savage', size: 'Oversize (unico)', catalog: './buzos/galeria/savage_blanco.jpg', zoom: './buzos/zoom/savage_blanco.jpg' },
     { name: 'savage', size: 'Oversize (unico)', catalog: './buzos/galeria/savage_negro.jpg', zoom: './buzos/zoom/savage_negro.jpg' },
     { name: 'shut up', size: 'Oversize (unico)', catalog: './buzos/galeria/shut up_marron.jpg', zoom: './buzos/zoom/shut up_marron.jpg' },
