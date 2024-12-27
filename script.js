@@ -1,4 +1,3 @@
-// Datos de products
 const products = [
     { name: '1997', size: 'Oversize (unico)', catalog: './buzos/galeria/1997_celeste.jpg', zoom: './buzos/zoom/1997_celeste.jpg' },
     { name: '1997', size: 'Oversize (unico)', catalog: './buzos/galeria/1997_negro.jpg', zoom: './buzos/zoom/1997_negro.jpg' },
