@@ -124,7 +124,8 @@ async function delay(ms) {
 
 async function load() {
     gallery.innerHTML = '';
-    const favs = JSON.parse(localStorage.getItem('favoritos') || '[]');
+    const favs = getFavs();
+    sendBtn.style.display = favs.length > 0 ? 'flex' : 'none';
     for (let index = 0; index < products.length; index++) {
         if (index > 5 && index % 10 == 0) {
             await delay(1000);
@@ -146,8 +147,10 @@ async function load() {
         }
 
         heart.addEventListener('click', (e) => {
-            heart.classList.toggle('active');
-            actualizarFavoritos();
+            if (heart.classList.toggle('active'))
+                addFav(index)
+            else
+                removeFav(index);
         });
 
         let touchTimeout;
@@ -200,19 +203,32 @@ async function load() {
     }
 }
 
-function actualizarFavoritos() {
-    const hearts = document.querySelectorAll('.heart.active');
-    const favoritos = Array.from(hearts).map(heart =>
-        parseInt(heart.dataset.index)
-    );
+function getFavs() {
+    return JSON.parse(localStorage.getItem('favs') || '[]');
+}
 
-    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+function setFavs(favs) {
+    localStorage.setItem('favs', JSON.stringify(favs));
+}
 
-    sendBtn.style.display = favoritos.length > 0 ? 'flex' : 'none';
+function addFav(index) {
+    const favs = getFavs();
+    if (favs.includes(index)) return;
+    favs.push(index);
+    setFavs(favs);
+    sendBtn.style.display = favs.length > 0 ? 'flex' : 'none';
+}
+
+function removeFav(index) {
+    const favs = getFavs();
+    if (!favs.includes(index)) return;
+    favs.splice(favs.indexOf(index), 1);
+    setFavs(favs);
+    sendBtn.style.display = favs.length > 0 ? 'flex' : 'none';
 }
 
 sendBtn.addEventListener('click', () => {
-    const favs = JSON.parse(localStorage.getItem('favoritos') || '[]');
+    const favs = JSON.parse(localStorage.getItem('favs') || '[]');
     const prods = favs.map(index => products[index]);
     const groups = new Map();
     for (const product of prods) {
@@ -242,4 +258,3 @@ sendBtn.addEventListener('click', () => {
 });
 
 load();
-actualizarFavoritos();
