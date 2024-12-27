@@ -148,6 +148,7 @@ function load() {
 
         img.addEventListener('touchstart', (e) => {
             touching = true;
+            e.preventDefault();
             touchTimeout = setTimeout(() => {
                 if (!touching) return;
                 zoomImage.src = producto.zoom;
