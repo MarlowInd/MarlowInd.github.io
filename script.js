@@ -146,9 +146,12 @@ function load() {
         let touching = false;
         let startX = null, startY = null;
 
+        img.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+
         img.addEventListener('touchstart', (e) => {
             touching = true;
-            e.preventDefault();
             touchTimeout = setTimeout(() => {
                 if (!touching) return;
                 zoomImage.src = producto.zoom;
