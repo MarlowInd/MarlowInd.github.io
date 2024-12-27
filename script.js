@@ -1,4 +1,4 @@
-// Datos de productos
+// Datos de products
 const products = [
     { name: '1997', size: 'Oversize (unico)', catalog: './buzos/galeria/1997_celeste.jpg', zoom: './buzos/zoom/1997_celeste.jpg' },
     { name: '1997', size: 'Oversize (unico)', catalog: './buzos/galeria/1997_negro.jpg', zoom: './buzos/zoom/1997_negro.jpg' },
@@ -44,7 +44,7 @@ const products = [
     { name: 'hat bear', size: 'Oversize (unico)', catalog: './buzos/galeria/hat bear_marron.jpg', zoom: './buzos/zoom/hat bear_marron.jpg' },
     { name: 'hat bear', size: 'Oversize (unico)', catalog: './buzos/galeria/hat bear_naranja.jpg', zoom: './buzos/zoom/hat bear_naranja.jpg' },
     { name: 'hat bear', size: 'Oversize (unico)', catalog: './buzos/galeria/hat bear_verde.jpg', zoom: './buzos/zoom/hat bear_verde.jpg' },
-    { name: 'liso', size: 'Oversize (unico)', catalog: './buzos/galeria/liso_marron.ing', zoom: './buzos/zoom/liso_marron.ing' },
+    { name: 'liso', size: 'Oversize (unico)', catalog: './buzos/galeria/liso_marron.jpg', zoom: './buzos/zoom/liso_marron.jpg' },
     { name: 'liso', size: 'Oversize (unico)', catalog: './buzos/galeria/liso_oscuro.jpg', zoom: './buzos/zoom/liso_oscuro.jpg' },
     { name: 'love to have', size: 'Oversize (unico)', catalog: './buzos/galeria/love to have_marron.jpg', zoom: './buzos/zoom/love to have_marron.jpg' },
     { name: 'love to have', size: 'Oversize (unico)', catalog: './buzos/galeria/love to have_negro.jpg', zoom: './buzos/zoom/love to have_negro.jpg' },
@@ -118,16 +118,24 @@ const zoomImage = document.getElementById('zoom-image');
 const sendBtn = document.getElementById('send-btn');
 const delta = 30;
 
-function load() {
+async function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function load() {
     gallery.innerHTML = '';
     const favs = JSON.parse(localStorage.getItem('favoritos') || '[]');
-    products.forEach((producto, index) => {
+    for (let index = 0; index < products.length; index++) {
+        if (index > 5 && index % 10 == 0) {
+            await delay(1000);
+        }
+        const product = products[index];
         const div = document.createElement('div');
         div.className = 'product';
 
         const img = document.createElement('img');
-        img.src = producto.catalog;
-        img.alt = producto.name;
+        img.src = product.catalog;
+        img.alt = product.name;
 
         const heart = document.createElement('div');
         heart.className = 'heart';
@@ -154,7 +162,7 @@ function load() {
             touching = true;
             touchTimeout = setTimeout(() => {
                 if (!touching) return;
-                zoomImage.src = producto.zoom;
+                zoomImage.src = product.zoom;
                 zoomOverlay.style.display = 'flex';
             }, 300);
         });
@@ -189,7 +197,7 @@ function load() {
         div.appendChild(img);
         div.appendChild(heart);
         gallery.appendChild(div);
-    });
+    }
 }
 
 function actualizarFavoritos() {
