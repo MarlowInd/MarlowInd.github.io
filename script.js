@@ -127,9 +127,8 @@ async function load() {
     const favs = getFavs();
     sendBtn.style.display = favs.length > 0 ? 'flex' : 'none';
     for (let index = 0; index < products.length; index++) {
-        if (index > 5 && index % 10 == 0) {
+        if (index > 5 && index % 10 == 0)
             await delay(1000);
-        }
         const product = products[index];
         const div = document.createElement('div');
         div.className = 'product';
@@ -142,9 +141,8 @@ async function load() {
         heart.className = 'heart';
         heart.dataset.index = index;
 
-        if (favs.includes(index)) {
+        if (favs.includes(index))
             heart.classList.add('active');
-        }
 
         heart.addEventListener('click', (e) => {
             if (heart.classList.toggle('active'))
@@ -233,11 +231,10 @@ sendBtn.addEventListener('click', () => {
     const groups = new Map();
     for (const product of prods) {
         const color = product.catalog.split('_')[1].split('.')[0].replaceAll(' ', '%20');
-        if (groups.has(product.name)) {
+        if (groups.has(product.name))
             groups.get(product.name).push(color);
-        } else {
+        else
             groups.set(product.name, [color]);
-        }
     }
     const join = (list, mid, last) => {
         let result = list[0];
