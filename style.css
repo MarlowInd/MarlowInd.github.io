@@ -7,7 +7,7 @@
 }
 body {
     background-color: #f4f4f4;
-    padding-top: 60px;
+    padding-top: 65px;
 }
 #header {
     position: fixed;
@@ -16,23 +16,27 @@ body {
     width: 100%;
     background-color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    padding: 15px;
+    padding: 12px;
     z-index: 100;
     display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    color: #333;
 }
 #icon {
     position: fixed;
-    top: 6px;
-    left: 6px;
+    top: 12px;
+    left: 10px;
     width: 64px;
     object-fit: cover;
     z-index: 101;
 }
 #header h1 {
-    color: #333;
     font-size: 20px;
+}
+#header h2 {
+    font-size: 16px;
 }
 #gallery {
     display: grid;
