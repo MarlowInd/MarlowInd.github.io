@@ -248,10 +248,11 @@ sendBtn.addEventListener('click', () => {
         return result;
     }
     window.open(
-        'https://wa.me/541131413193/?text=Hola%21%0AVi%20los%20buzos%20y%20me%20gustaron%20los%20modelos%20' +
-        join([...groups].map(([modelo, colores]) =>
-            modelo.replaceAll(' ', '%20') + '%20en%20' +
-            join(colores, '%2C%20', '%20y%20')), '%2C%20', '%20y%20') +
+        'https://wa.me/541131413193/?text=Hola%21%0AVi%20los%20buzos%20y%20me%20gustaron%20' +
+        (groups.size > 1 ? 'los%20modelos%20' : 'el%20modelo%20') +
+        join([...groups].map(([model, colors]) =>
+            model.split(' ').map(word => word.at(0).toUpperCase() + word.substring(1).toLowerCase()).join(' ').replaceAll(' ', '%20') + '%20en%20' +
+            join(colors, '%2C%20', '%20y%20')), '%2C%20', '%20y%20') +
         '.%0ACu%C3%A1ndo%20ingresan%3F',
         '_blank'
     );
